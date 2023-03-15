@@ -10,7 +10,6 @@ def index(request):
     return render(request, "upload_files/index.html")
 
 def upload_file(request):
-
     mypath = 'media'
     allfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
     if request.method == 'POST' and request.FILES['upload']:
@@ -19,10 +18,8 @@ def upload_file(request):
         file = fss.save(upload.name, upload)
         file_url = fss.url(file)
         mypath = 'media'
-        allfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
         return render(request, 'upload_files/upload.html', {'file_url': file_url, 'allfiles': allfiles})
     mypath = 'media'
-    allfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
     return render(request, 'upload_files/upload.html', {'allfiles': allfiles})
 
 def file(request):
