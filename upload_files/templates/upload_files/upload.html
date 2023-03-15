@@ -8,21 +8,18 @@
     {% csrf_token %}
         <input type="file" name="upload" accept=" .txt">
         <button type="submit"> Go</button>
-        <div id="drop-zone" ondrop="dropHandler(event);" style="width:400px;height:300px;background:grey;"></div>
+        <div type="file" name="dropzone" accept=" .txt" id="drop-zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);" style="width:400px;height:300px;background:grey;"></div>
     </form>
 
-
+<h2> Uploads so far</h2>
     {%  if file_url %}
-        <h2> result</h2>
         <p> uploaded to <a href="{{ file_url }}"> {{ file_url }}</a></p>
     {% else %}
-    <h2> Uploads so far</h2>
         <ol>
         {% for file in allfiles%}
         <li><a href="/media/{{file}}"> {{ file }} </a></li>
         {% endfor %}
         </ol>
-
     {% endif %}
 {% endblock %}
 
