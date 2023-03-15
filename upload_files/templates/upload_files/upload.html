@@ -1,0 +1,22 @@
+{%  extends 'base.html' %}
+
+
+{% block content %}
+
+<h1>Lade deine Dateien hoch</h1>
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+        <input type="file" name="upload" accept=" .txt">
+        <button type="submit"> Go</button>
+        <div id="drop-zone" ondrop="dropHandler(event);" style="width:400px;height:300px;background:grey;"></div>
+    </form>
+
+    <h2> result</h2>
+    {%  if file_url %}
+        <p> uploaded to <a href=" {{ file_url }} "> {{ file_url }}</a></p>
+{% else %}
+    <h2> Nu uploads yet</h2>
+    {% endif %}
+{% endblock %}
+
+

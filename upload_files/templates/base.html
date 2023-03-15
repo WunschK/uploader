@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{%  load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="{% static 'upload_files/style.css' %}"/>
+    <script src="{% static 'upload_files/upload_files.js' %}"></script>
+    <title>Upload</title>
+</head>
+<body>
+    <nav>
+        <a href="{% url 'index' %}">Index</a>
+        <a href="{% url 'upload' %}">Upload</a>
+        <a href="#">whatever</a>
+    </nav>
+    <div class="container">
+        {%  block content %}
+        {% endblock content %}
+    </div>
+</body>
+</html>
