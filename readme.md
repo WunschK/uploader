@@ -6,7 +6,7 @@ The easiest way - doing so by a simple form and creating a /media folder is alre
 The accompanying forms are rudimentary.
 
 1) uploading and handling with Models is still missing
-2) under /upload.html the base for a dropzone is already present. However, the logic isn't working yet
+2) uploading with dropzoneJS does it with an image model.
 
 These two steps will be added as soon as I have time to continue this.
 
