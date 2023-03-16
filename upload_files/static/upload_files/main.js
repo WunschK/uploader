@@ -4,7 +4,8 @@ Dropzone.autoDiscover = false;
     {
         url: 'dz_upload/',
         maxFiles:3,
-        maxFIlesize: 2,
+        maxFilesize: 2,
+        acceptedFiles: '.jpg',
         dictDefaultMessage:'whoop'
     })
 
