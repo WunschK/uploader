@@ -3,13 +3,24 @@
 
 {% block content %}
 
-<h1>Lade deine Dateien hoch</h1>
+<h1>Upload your files</h1>
     <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-        <input type="file" name="upload" accept=" .txt">
-        <button type="submit"> Go</button>
-        <div type="file" name="dropzone" accept=" .txt" id="drop-zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);" style="width:400px;height:300px;background:grey;"></div>
+    <input type="file" name="upload" accept=" .txt">
+    <button type="submit"> Go</button>
     </form>
+
+        <h1>Upload using dropzoneJS</h1>
+
+<form enctype='multipart/form-data' action=" {% url 'index' %}" method='POST' class="dropzone" id="my-dropzone" >
+    {% csrf_token %}
+    <div class="fallback">
+      <input name="file" type="file" multiple />
+    </div>
+</form>
+
+
+
 
 <h2> Uploads so far</h2>
     {%  if file_url %}
@@ -21,6 +32,8 @@
         {% endfor %}
         </ol>
     {% endif %}
+
+
 {% endblock %}
 
 

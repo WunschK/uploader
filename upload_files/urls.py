@@ -6,5 +6,6 @@ from . import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('upload/', views.upload_file, name='upload'),
-    path('file/', views.file, name='file')
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('upload/dz_upload/', views.dz_upload, name='dz_upload'),
+] + static(settings.MEDIA_URL)
+

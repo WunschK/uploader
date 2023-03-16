@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.core.files.storage import FileSystemStorage
 from django.contrib.staticfiles.utils import get_files
 from os.path import isfile, join
 from os import listdir
+from .models import Image
 
 # Create your views here.
 def index(request):
@@ -18,10 +19,21 @@ def upload_file(request):
         upload = request.FILES['upload']
         fss = FileSystemStorage()
         file = fss.save(upload.name, upload)
-#        file_url = fss.url(file)
-#        mypath = 'media'
         return redirect("/upload")
     return render(request, 'upload_files/upload.html', {'allfiles': allfiles})
 
 def file(request):
     return HttpResponse("Starting point for files and details")
+
+
+def dz_upload(request):
+    if request.method == 'POST':
+        my_file = request.FILES['file']
+        Image.objects.create(image=my_file)
+        return HttpResponse('')
+    return JsonResponse({
+        'post': 'false'
+    })
+
+
+
